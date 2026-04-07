@@ -1,12 +1,5 @@
-from utils.review_analyzer import analyze_reviews
+from utils.preprocess import load_and_preprocess
 
-reviews = [
-    "This product is amazing!",
-    "Very good quality",
-    "Worst purchase ever",
-    "Looks fake to me"
-]
+df = load_and_preprocess("data/fake_reviews.csv")
 
-score = analyze_reviews(reviews)
-
-print("Review Trust Score:", score)
+print(df.head())
