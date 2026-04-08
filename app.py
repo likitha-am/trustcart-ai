@@ -1,5 +1,7 @@
-from utils.preprocess import load_and_preprocess
+from model.predict import predict_review
 
-df = load_and_preprocess("data/fake_reviews.csv")
+review = "This product is really good and worth the money"
 
-print(df.head())
+result = predict_review(review)
+
+print("Prediction:", result)
