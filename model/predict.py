@@ -1,28 +1,20 @@
 import numpy as np
+import pickle
 from tensorflow.keras.models import load_model
-from sklearn.feature_extraction.text import TfidfVectorizer
 from utils.preprocess import clean_text
 
-# Load model
+# 🔥 Load model
 model = load_model("model/review_model.h5")
 
-# IMPORTANT: we must use SAME vectorizer
-# (for now we re-fit, later we'll save it properly)
+# 🔥 Load vectorizer (PUT IT HERE)
+with open("model/vectorizer.pkl", "rb") as f:
+    vectorizer = pickle.load(f)
 
-vectorizer = TfidfVectorizer(max_features=5000)
-
-# Temporary training data (to fit vectorizer)
-sample_data = [
-    "this product is amazing",
-    "worst item ever",
-    "very good quality",
-    "completely fake product"
-]
-
-vectorizer.fit(sample_data)
 
 def predict_review(review):
     review = clean_text(review)
+    
+    # Convert text → vector using SAME vectorizer
     vector = vectorizer.transform([review]).toarray()
 
     prediction = model.predict(vector)[0][0]

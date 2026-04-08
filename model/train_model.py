@@ -4,6 +4,7 @@ from sklearn.feature_extraction.text import TfidfVectorizer
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense
 from utils.preprocess import load_and_preprocess
+import pickle
 
 # Load data
 df = load_and_preprocess("data/fake_reviews.csv")
@@ -38,3 +39,8 @@ model.fit(X_train, y_train, epochs=5, batch_size=32)
 # Evaluate
 loss, accuracy = model.evaluate(X_test, y_test)
 print("Accuracy:", accuracy)
+
+model.save("model/review_model.h5")    
+
+with open("model/vectorizer.pkl", "wb") as f:
+    pickle.dump(vectorizer, f)
