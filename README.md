@@ -135,15 +135,4 @@ It reflects a growing interest in exploring how machine learning systems can be 
 * Streamlit
 * BeautifulSoup (experimental)
 
----
 
-## Author
-
-Built as part of an ongoing exploration into machine learning, neural networks, and building things that actually work (most of the time).
-
----
-
-## Note
-
-If this project works perfectly, it is by design.
-If it does not, it is a learning opportunity.
