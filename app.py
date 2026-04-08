@@ -1,13 +1,8 @@
-import streamlit as st
-from model.predict import predict_review
+from scraper.scraper import get_reviews
 
-st.title("🛒 TrustCart AI - Review Analyzer")
+url = "https://www.amazon.in/HiPer-Microfoliant-Resurfacing-Skin-Sphingolipids/dp/B0DP9ZM7BJ"
 
-review = st.text_area("Enter Product Review")
+reviews = get_reviews(url)
 
-if st.button("Analyze"):
-    if review.strip() == "":
-        st.warning("Please enter a review")
-    else:
-        result = predict_review(review)
-        st.success(f"Result: {result}")
+for r in reviews:
+    print(r)
